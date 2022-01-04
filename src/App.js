@@ -4,6 +4,7 @@ export default function App() {
   return (
     <div>
       <MyForm />
+      <MyForm />
     </div>
   );
 }
@@ -13,10 +14,8 @@ function MyForm() {
   const [email, setEmail] = useState("");
   const [mobno, setMobno] = useState("");
   const [password, setPassword] = useState("");
-  const Attcss = "form form-control w-50 my-2";
 
   const [list, setList] = useState([]);
-  const [validationcheck, setValidationcheck] = useState(false);
   const uname = (e) => {
     const newUname = e.target.value;
     setUsername(newUname);
@@ -37,11 +36,6 @@ function MyForm() {
   const register = () => {
     //alert(`${username} ${email} ${mobno} ${password}`);  //ok
 
-    if (username == "" || email == "" || mobno == "" || password == "") {
-      setValidationcheck(true);
-      return;
-    }
-
     const object = {
       Name: username,
       email: email,
@@ -54,7 +48,6 @@ function MyForm() {
     setEmail("");
     setMobno("");
     setPassword("");
-    setValidationcheck(false);
   };
 
   return (
@@ -76,7 +69,6 @@ function MyForm() {
           placeholder="Enter your email id"
           value={email}
           onChange={uemail}
-          className={email == "" && validationcheck ? "border border-red" : ""}
         />
       </div>
       <div>
@@ -86,18 +78,15 @@ function MyForm() {
           placeholder="enter mobile number"
           value={mobno}
           onChange={umobno}
-          className={mobno == "" && validationcheck ? "border border-red" : ""}
         />
       </div>
       <div>
         <input
           type="text"
+          className="form form-control w-50 my-2"
           placeholder="Enter Password"
           value={password}
           onChange={pass}
-          className={
-            password == "" && validationcheck ? "border border-red" : ""
-          }
         />
       </div>
       <div>
