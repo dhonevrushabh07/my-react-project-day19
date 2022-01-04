@@ -3,67 +3,110 @@ import { useState } from "react";
 export default function App() {
   return (
     <div>
-      <MyCmponent />
+      <MyForm />
     </div>
   );
 }
 
-function MyCmponent() {
-  let [counter, setCounter] = useState(0);
-  let [disCounter, setDisCounter] = useState(0);
-  const [message, setMessage] = useState("");
+function MyForm() {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [mobno, setMobno] = useState("");
+  const [password, setPassword] = useState("");
+
   const [list, setList] = useState([]);
-
-  const tweet = (e) => {
-    const newMessage = e.target.value;
-    if (list == []) {
-      alert("Please enter tweet");
-    } else {
-      setMessage(newMessage);
-    }
+  const uname = (e) => {
+    const newUname = e.target.value;
+    setUsername(newUname);
   };
-  const post = () => {
-    const newList = [message, ...list];
+  const uemail = (e) => {
+    const newUemail = e.target.value;
+    setEmail(newUemail);
+  };
+  const umobno = (e) => {
+    const newuMobno = e.target.value;
+    setMobno(newuMobno);
+  };
+
+  const pass = (e) => {
+    const newpass = e.target.value;
+    setPassword(newpass);
+  };
+  const register = () => {
+    //alert(`${username} ${email} ${mobno} ${password}`);  //ok
+
+    const object = {
+      Name: username,
+      email: email,
+      Mob_no: mobno,
+      Password: password,
+    };
+    const newList = [object, ...list];
     setList(newList);
-    setMessage("");
+    setUsername("");
+    setEmail("");
+    setMobno("");
+    setPassword("");
   };
 
-  const deletePost = () => {
-    list.splice(0, 1);
-    setList([...list]);
-    console.log(list);
-  };
-  const increment = () => {
-    counter++;
-    setCounter(counter);
-  };
-  const decrement = () => {
-    setDisCounter(disCounter++);
-  };
   return (
     <div>
-      <div className="bg-dark text-light p-3 fs-1 mb-1">My Tweet App</div>
-      <input
-        type="text"
-        value={message}
-        onChange={tweet}
-        placeholder="tweet here"
-      />
-      {/**Input Box */}
-      <input type="button" value="Tweet" onClick={post} />
-      <input type="button" value="Delete Tweet" onClick={deletePost} />
+      <div className="bg-dark text-light p-2 fs-1">Registration form</div>
       <div>
-        {" "}
+        <input
+          type="text"
+          className="form form-control w-50 my-2"
+          placeholder="Enter your Name"
+          value={username}
+          onChange={uname}
+        />
+      </div>
+      <div>
+        <input
+          type="text"
+          className="form form-control w-50 my-2"
+          placeholder="Enter your email id"
+          value={email}
+          onChange={uemail}
+        />
+      </div>
+      <div>
+        <input
+          type="text"
+          className="form form-control w-50 my-2"
+          placeholder="enter mobile number"
+          value={mobno}
+          onChange={umobno}
+        />
+      </div>
+      <div>
+        <input
+          type="text"
+          className="form form-control w-50 my-2"
+          placeholder="Enter Password"
+          value={password}
+          onChange={pass}
+        />
+      </div>
+      <div>
+        <input
+          className="btn btn-outline-danger my-1 w-25"
+          type="button"
+          value="Register"
+          onClick={register}
+        />
+      </div>
+      <div>
         {list.map((item) => (
           <div>
-            <div className="bg-dark text-light my-1">{item}</div>
-            <input type="button" value="Like" onClick={increment} />
-            <span className="fs-2 mx-3">{counter}</span>
-            <input type="button" value="Dislike" onClick={decrement} />
-            <span className=" fs-2 mx-3">{disCounter}</span>
+            <div>Name : {item.Name} </div>
+            <div>Mobile No {item.Mob_no} </div>
+            <div> Email id : {item.email} </div>
+            <div>Password : {item.Password} </div>
           </div>
         ))}
       </div>
+      <hr />
     </div>
   );
 }
