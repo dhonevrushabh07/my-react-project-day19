@@ -1,24 +1,61 @@
+import { useState } from "react";
+
 export default function App() {
   return (
     <div>
       <div>Hello</div>
       <MyComponent />
-      <MyComponent></MyComponent>
     </div>
   );
 }
 
 function MyComponent() {
-  let str1 = `Hello Whats going on`;
-  let str2 = `Whats up dude ,How are ypu`;
-  let str3 = `I am Fine what about you`;
-  let att1 = "bg-info p-3 fs-1 mb-1";
-  let att2 = "bg-danger p-3 fs-1 mb-1";
+  let list = [1, 1, 1, 1, 1, 1, 1];
+  const [defaultCss, setDefaultCss] = useState(
+    "bg-info p-3 my-1 text-light font-monospace"
+  );
+  let btnCSS1 = "btn btn-outline-danger bg-dark mx-1";
+  let btnCSS2 = "btn btn-outline-danger bg-warning mx-1";
+  let btnCSS3 = "btn btn-outline-danger bg-success mx-1";
+
+  let customeCSS1 = () =>
+    setDefaultCss("bg-dark p-3 my-1 text-light font-monospace");
+
+  let customeCSS2 = () =>
+    setDefaultCss(
+      "bg-warning text-dark p-3 my-1 text-light font-monospace border-red"
+    );
+
+  let customeCSS3 = () =>
+    setDefaultCss("bg-success p-3 my-1 text-light font-monospace");
   return (
     <div>
-      <div className="bg-danger p-3 fs-1 mb-1">{str1}</div>
-      <div className={att1}>{str2.toUpperCase()}</div>
-      <div className={att2}> {str3.toLocaleLowerCase()}</div>
+      <input
+        className={btnCSS1}
+        type="button"
+        value="Coustom CSS1"
+        onClick={customeCSS1}
+      />
+      <input
+        className={btnCSS2}
+        type="button"
+        value="Coustom CSS2"
+        onClick={customeCSS2}
+      />
+      <input
+        className={btnCSS3}
+        type="button"
+        value="Coustom CSS3"
+        onClick={customeCSS3}
+      />
+      {list.map(() => (
+        <div className={defaultCss}>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat ullam
+          animi nemo ducimus repellendus obcaecati, cum totam accusamus
+          similique facere amet, tenetur repudiandae atque vel quibusdam
+          quisquam, ipsam error maxime.{defaultCss}
+        </div>
+      ))}
     </div>
   );
 }
