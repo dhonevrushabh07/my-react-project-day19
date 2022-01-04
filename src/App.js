@@ -9,25 +9,14 @@ export default function App() {
 }
 
 function MyComponent() {
-  let [msg, setMsg] = useState("Hello World");
-  const changeMessage = (e) => {
-    setMsg(e.target.value);
-  };
-
+  const [list] = useState(["Hello Worlddd"]);
   return (
     <div>
-      <h1>Counter Application</h1>
-      <input
-        className="w-100"
-        type="text"
-        value={msg}
-        onChange={changeMessage}
-      />
-      <div>{msg}</div>
-      <div>{msg}</div>
-      <div>{msg}</div>
-      <div>{msg}</div>
-      <div>{msg}</div>
+      <h1>Working with Input Element</h1>
+      <input type="button" value="Tweet to Everyone" />
+      {list.map((item) => (
+        <div>{item}</div>
+      ))}
     </div>
   );
 }
