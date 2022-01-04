@@ -8,12 +8,27 @@ export default function App() {
 }
 
 function MyComponent() {
-  let styleCSS = "bg-black text-light p-2 fs-1";
-  let styleCSS1 = "bg-danger text-light p-2 fs-1 mt-1";
+  let id = 1;
+  let username = `Vrushabh`;
+  let email = `vrushabh@gmail.com`;
+  let list = ["delhi", "Pune", "Amravti"];
+  let obj = { id: "1", username: "DhoneVrushabh" };
   return (
     <div>
-      <div className={styleCSS}>Hello Vrushabh</div>
-      <div className={styleCSS1}>This is my component</div>
+      <h1>Learning Interpolation</h1>
+      <h1>
+        {username} {id} {email} {list}
+      </h1>
+      <h1>{`i am also js ${obj.id} ${obj.username}`}</h1>
+
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt
+        perspiciatis autem eligendi sapiente doloribus quidem ratione ab tempora
+        corporis, est ipsam id eos amet molestiae, accusamus voluptas numquam ut
+        nobis vitae optio! Hic quidem, doloremque laborum recusandae autem ad
+        accusantium aspernatur nisi. Dolorum facere fugit placeat ipsum eius
+        tempora ipsam.
+      </p>
     </div>
   );
 }
