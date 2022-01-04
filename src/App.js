@@ -3,59 +3,50 @@ import { useState } from "react";
 export default function App() {
   return (
     <div>
-      <div>Hello</div>
       <MyComponent />
     </div>
   );
 }
 
 function MyComponent() {
-  let list = [1, 1, 1, 1, 1, 1, 1];
-  const [defaultCss, setDefaultCss] = useState(
-    "bg-info p-3 my-1 text-light font-monospace"
+  let list = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+  const [headerCss, setheaderCss] = useState(
+    "bg-dark text-light p-2 fs-1 fw-bold"
   );
-  let btnCSS1 = "btn btn-outline-danger bg-dark mx-1";
-  let btnCSS2 = "btn btn-outline-danger bg-warning mx-1";
-  let btnCSS3 = "btn btn-outline-danger bg-success mx-1";
+  const [paraCss, setparaCss] = useState(
+    "alert alert-danger text-dark fw-bold font-monospace"
+  );
+  let tweet = `      let str1=Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt
+      iure non placeat voluptatem aut mollitia doloribus aspernatur? Harum
+      quibusdam nobis, eveniet sunt corrupti rerum reiciendis dolorem omnis quod
+      optio aliquid architecto consequuntur minus suscipit. Eos, assumenda
+      dolorum excepturi neque quod, aliquid autem reprehenderit tenetur
+      provident molestias minus non ea. Veritatis.`;
 
-  let customeCSS1 = () =>
-    setDefaultCss("bg-dark p-3 my-1 text-light font-monospace");
+  const customCSS1 = () => setparaCss("bg-info text-light p-2 fs-3 fw-bold");
+  const customCSS2 = () => setparaCss("bg-warning text-light p-2 fs-3 fw-bold");
+  const customCSS3 = () => setparaCss("bg-success text-light p-2 fs-3 fw-bold");
 
-  let customeCSS2 = () =>
-    setDefaultCss(
-      "bg-warning text-dark p-3 my-1 text-light font-monospace border-red"
-    );
-
-  let customeCSS3 = () =>
-    setDefaultCss("bg-success p-3 my-1 text-light font-monospace");
   return (
     <div>
-      <input
-        className={btnCSS1}
-        type="button"
-        value="Coustom CSS1"
-        onClick={customeCSS1}
-      />
-      <input
-        className={btnCSS2}
-        type="button"
-        value="Coustom CSS2"
-        onClick={customeCSS2}
-      />
-      <input
-        className={btnCSS3}
-        type="button"
-        value="Coustom CSS3"
-        onClick={customeCSS3}
-      />
-      {list.map(() => (
-        <div className={defaultCss}>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat ullam
-          animi nemo ducimus repellendus obcaecati, cum totam accusamus
-          similique facere amet, tenetur repudiandae atque vel quibusdam
-          quisquam, ipsam error maxime.{defaultCss}
-        </div>
-      ))}
+      <input type="button" value="button1" onClick={customCSS1} />
+      <input type="button" value="button2" onClick={customCSS2} />
+      <input type="button" value="button3" onClick={customCSS3} />
+      <div>
+        {list.map(() => (
+          <div>
+            <div
+              className={headerCss}
+              style={{ borderBottom: "red solid 5px" }}
+            >
+              Hello
+            </div>
+            <div className={paraCss}>
+              {tweet} {paraCss}
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
