@@ -9,35 +9,25 @@ export default function App() {
 }
 
 function MyComponent() {
-  let [counter, setCounter] = useState(0);
-  const increment = () => {
-    counter++;
-    setCounter(counter);
+  let [msg, setMsg] = useState("Hello World");
+  const changeMessage = (e) => {
+    setMsg(e.target.value);
   };
+
   return (
     <div>
-      <h1>Like Application</h1>
+      <h1>Counter Application</h1>
       <input
-        className="btn btn-outline-danger my-1"
-        type="button"
-        value="Like Me."
-        onClick={increment}
+        className="w-100"
+        type="text"
+        value={msg}
+        onChange={changeMessage}
       />
-
-      <div>Like {counter}</div>
-      <div>Like {counter}</div>
-      <div>Like {counter}</div>
-      <div>Like {counter}</div>
-      <div>Like {counter}</div>
-      <div>Like {counter}</div>
-      <div>Like {counter}</div>
-      <div>Like {counter}</div>
-      <div>Like {counter}</div>
-      <div>Like {counter}</div>
-      <div>Like {counter}</div>
-      <div>Like {counter}</div>
-      <div>Like {counter}</div>
-      <div>Like {counter}</div>
+      <div>{msg}</div>
+      <div>{msg}</div>
+      <div>{msg}</div>
+      <div>{msg}</div>
+      <div>{msg}</div>
     </div>
   );
 }
